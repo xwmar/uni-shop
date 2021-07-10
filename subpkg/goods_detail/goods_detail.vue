@@ -45,7 +45,11 @@
             options: [{
               icon: 'shop',
               text: '店铺'
-            }, {
+            },
+            {
+              icon: 'headphones',
+              text: '客服'
+            },{
               icon: 'cart',
               text: '购物车',
               info: 2
@@ -94,6 +98,9 @@
             url: '/pages/cart/cart'
           })
         }
+      },
+      buttonClick(e) {
+        console.log(e)
       }
     }
   }

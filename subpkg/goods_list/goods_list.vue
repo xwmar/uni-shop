@@ -38,7 +38,7 @@
         const { data: res } = await uni.$http.get('/goods/search', this.queryObj)
         this.isLoading = false // 请求完毕
         // 数据请求完毕,立即按需调用cb回调函数
-        cb && cb()
+        cb && cb( uni.$showMsg('刷新成功!'))
         if (res.meta.status !== 200) return uni.$showMsg()
         // 为数据赋值
         this.goodsList = [ ...this.goodsList, ...res.message.goods]
