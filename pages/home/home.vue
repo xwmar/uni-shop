@@ -1,5 +1,9 @@
 <template>
   <view>
+    <!-- 使用自定义的搜索组件 -->
+    <view class="search-box">
+      <my-search @searchClick="search"></my-search>
+    </view>
     <!-- 轮播图 -->
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" circular>
       <swiper-item v-for="item in swiperList" :key="item.goods_id">
@@ -27,6 +31,7 @@
             <image 
              :src="item.product_list[0].image_src" 
              :style="{width: item.product_list[0].image_width + 'rpx'}"
+             mode="widthFix"
             ></image>
           <!-- 楼层右侧图片 -->
           </navigator>
@@ -40,6 +45,7 @@
             <image 
             :style="{width: i.image_width + 'rpx'}"
             :src="i.image_src" 
+            mode="widthFix"
             ></image>
             </navigator>
           </view>
@@ -99,12 +105,27 @@
           })
         })
         this.floorList = data.message
+      },
+      // 搜索功能
+      search() {
+        uni.navigateTo({
+          url: '/subpkg/search/search'
+        })
       }
     }
   }
 </script>
 
 <style lang="scss">
+  .search-box {
+    // 设置定位效果为“吸顶”
+    background-color: #c00000;
+    position: sticky;
+    // 吸顶的“位置”
+    top: 0;
+    // 提高层级，防止被轮播图覆盖
+    z-index: 999;
+  }
   // 轮播图样式
   swiper {
     height: 330rpx;
@@ -140,13 +161,7 @@
      display: flex;
      justify-content: space-around;
      flex-wrap: wrap;
-        
-        image {
-          height: 237rpx;
-        }
     }
-    
-    
   }
   
   

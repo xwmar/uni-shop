@@ -1,5 +1,6 @@
 <template>
   <view>
+    <my-search @searchClick="search"></my-search>
     <view class="scroll-view-container">
       <!-- 左侧的滚动视图区域 -->
       <scroll-view class="left-scroll-view" scroll-y :style="{height: wh + 'px'}">
@@ -48,7 +49,7 @@
           // uni.getSystemInfoSync() 获取系统信息同步
 		      const sysInfo = uni.getSystemInfoSync()
 		      // windowHeight: 可使用窗口高度
-		      this.wh = sysInfo.windowHeight
+		      this.wh = sysInfo.windowHeight - 50
           
           this.getCateList()
 		    },
@@ -75,6 +76,12 @@
           goodsListPage(id){
             uni.navigateTo({
               url: '/subpkg/goods_list/goods_list?cid=' + id
+            })
+          },
+          // 搜索按钮
+          search() {
+            uni.navigateTo({
+              url: '/subpkg/search/search'
             })
           }
         }
