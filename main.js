@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App'
 // 引入网络配置请求
 import './common/request.js'
+// 引入vuex
+import store from './store/store.js'
 
 // 封装展示消息提示的方法
 uni.$showMsg = function (title = '数据加载失败!', duration = 1500) {
@@ -17,6 +19,7 @@ Vue.config.productionTip = false
 App.mpType = 'app'
 
 const app = new Vue({
-    ...App
+    ...App,
+    store
 })
 app.$mount()

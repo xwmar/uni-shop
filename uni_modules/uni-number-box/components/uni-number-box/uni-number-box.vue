@@ -102,10 +102,13 @@
 				return scale;
 			},
 			_onBlur(event) {
+        // 官方的代码没有进行数值转换，用户输入的 value 值可能是非法字符：
+        // let value = event.detail.value;
+        // 将用户输入的内容转化为整数
 				this.$emit('blur', event)
 				let value = event.detail.value;
 				if (!value) {
-					// this.inputValue = 0;
+					this.inputValue = 1;
 					return;
 				}
 				value = +value;
